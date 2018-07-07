@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hiper jumper 3000</title>
+    <meta charset="Utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="./styles/index.less" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400"/></head>
+  <body>
+    <div class="wrapper noSelect" id="gameWrapper"><article class="game" id="gameArt"><header class="title title--style" id="title"><div class="title__lBox"><h2>hiper jumper 2000</h2></div><div class="title__rBox"><h4>created by <a href="http://poyters.pl">poyters.</a></h4><h5>alpha 1.7.9</h5></div></header><main class="game__frame" id="game"><div class="game__window game--border" id="gameWindow"><section class="stats stats__first stats--style"><p>Player 1 </p><p class="stats--smaller">score:<span class="stats--smaller" id="pointsPlayer0"> 0</span></p><p class="stats--smaller">time:<span class="stats--smaller" id="timePlayer0"> -:--   </span></p></section><section class="stats stats__second stats--style"><p>Player 2 </p><p class="stats--smaller">score:<span class="stats--smaller" id="pointsPlayer1"> 0</span></p><p class="stats--smaller">time:<span class="stats--smaller" id="timePlayer1"> -:--</span></p></section><section class="controlMobile controlMobile--hidden" id="controlMobile"><div class="controlMobile__left"><div class="controlMobile__btnCircle controlMobile--styleBtn controlMobile--largerPadding" id="mobileMoveL">l</div><div class="controlMobile__btnCircle controlMobile--styleBtn controlMobile--largerPadding" id="mobileMoveU">up</div><div class="controlMobile__btnSpace controlMobile--styleBtn" id="mobileMoveD">down</div></div><div class="controlMobile__right"><div class="controlMobile__btnCircle controlMobile--styleBtn controlMobile--largerPadding" id="mobileMoveR">r</div><div class="controlMobile__btnSpace controlMobile--styleBtn" id="mobileMoveJ">jump</div></div></section><section class="controlPanel"><div class="controlPanel__btn controlPanel--style" id="startOne"><h5>start 1 player</h5></div><div class="controlPanel__btn controlPanel--style" id="startTwo"><h5>start 2 players</h5></div><div class="controlPanel__btn controlPanel--style" id="giveUpBoard"><h5>give up board</h5></div></section><section class="game__board game--styleBoard" id="gameBoard"></section></div></main></article></div>
+  </body>
+  <script>
+    require('./engine/index.js')
+  </script>
+</html>

@@ -1,0 +1,292 @@
+//LESS preprocessor, BEM methodology
+//Variables
+@bgColor: #161b20;
+@txtColor: #eee;
+@txtColorHover: #bbb;
+@structureColor: #720b0b;
+
+//Base code
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: @bgColor;
+  color: @txtColor;
+  overflow: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  margin: 0 0 3px 0;
+}
+h1 {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+h2 {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+h3 {
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+h4 {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+h5 {
+  font-size: 8px;
+  line-height: 8px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+h6 {
+  font-size: 4px;
+  line-height: 4px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+a {
+  transition: ease-in-out 0.3s;
+
+  &:link, &:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  &:hover {
+    color: @txtColorHover;
+  }
+}
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+//Code
+.wrapper {
+  width: auto;
+  margin: 0 auto;
+}
+.game {
+  width: 100%;
+  height: auto;
+  float: left;
+}
+.game__frame {
+  width: 100%;
+  height: auto;
+  float: left;
+}
+.game__window {
+  width: 1000px;
+  height: auto;
+  position: absolute;
+  z-index: 99;
+  overflow: hidden;
+}
+.game__board {
+  width: 1200px;
+  height: 500px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.game--styleBoard {
+  background: #a31834;
+}
+.game--border {
+  border: 3px solid #720b0b;
+}
+.title {
+  width: ~"calc(100% - 64px)";
+  height: auto;
+  float: left;
+}
+.title__lBox {
+  float: left;
+}
+.title__rBox {
+  float: right;
+}
+.title--style {
+  padding: 9px 30px 9px 30px;
+  border: 2px solid #720b0b;
+  border-bottom: none;
+}
+.stats {
+  width: 80px;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+.stats__first {
+  margin-left: 30px;
+  left: 0;
+}
+.stats__second {
+  margin-right: 30px;
+  right: 0;
+}
+.stats--style {
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 14px;
+  line-height: 8px;
+}
+.stats--smaller {
+  font-size: 12px;
+  line-height: 6px;
+}
+.controlPanel {
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 4;
+}
+.controlPanel__btn {
+  float: left;
+}
+.controlPanel--style {
+  padding: 3px 5px 3px 5px;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.controlPanel--style h5 {
+  letter-spacing: 1px;
+}
+.controlPanel--style:hover {
+  color: #bbb;
+}
+.controlMobile {
+  left: 0;
+  bottom: 23px;
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+}
+.controlMobile__left,
+.controlMobile__right {
+  width: 100px;
+  height: auto;
+  position: relative;
+}
+.controlMobile__left {
+  float: left;
+  left: 0;
+}
+.controlMobile__left > * {
+  float: left;
+}
+.controlMobile__right {
+  float: right;
+}
+.controlMobile__right > * {
+  float: right;
+}
+.controlMobile__btnCircle {
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.controlMobile__btnSpace {
+  width: 90px;
+  height: 30px;
+}
+.controlMobile--styleBtn {
+  margin: 4px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 5px;
+}
+.controlMobile--largerPadding {
+  padding-top: 9px;
+}
+.controlMobile--hidden,
+.controlMobile--hidden > * {
+  visibility: hidden;
+}
+.barrier,
+.player {
+  position: absolute;
+}
+.barrier--style,
+.player--style {
+  box-sizing: border-box;
+  border: 1px solid #330202;
+}
+.barrier--style {
+  background: #720b0b;
+}
+.player--first {
+  background: #eac2c2;
+}
+.player--second {
+  background: #683737;
+}
+.gainPoint {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+.gainPoint--style {
+  box-sizing: border-box;
+  border: 2px solid #330202;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: #000;
+}
+.gainPoint--first {
+  background: #eac2c2;
+}
+.gainPoint--second {
+  background: #683737;
+}
+.endPoint {
+  width: 30px;
+  height: 8px;
+  position: absolute;
+}
+.endPoint--style {
+  box-sizing: border-box;
+  border: 1px solid #330202;
+  background: #f9f2f2;
+}
+.ladder {
+  width: 6px;
+  position: absolute;
+}
+.ladder--style {
+  box-sizing: border-box;
+  border: 1px solid #330202;
+  background: #3a2304;
+}
