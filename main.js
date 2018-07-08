@@ -13,7 +13,7 @@ function createWindow () {
 
   // and load the index.html of the sources.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, './src/game.jade'),
+    pathname: path.join(__dirname, './src/main.jade'),
     protocol: 'file:',
     slashes: true
   }))
