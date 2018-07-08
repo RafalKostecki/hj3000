@@ -1,5 +1,5 @@
 //LESS preprocessor, BEM methodology
-@import './index.less';
+@import 'index.less';
 
 .wrapper {
   width: auto;
@@ -97,12 +97,15 @@
 .barrier--style {
   background: #720b0b;
 }
-.player--first {
-  background: #eac2c2;
+.player {
+  &--first {
+    background: #eac2c2;
+  }
+  &--second {
+    background: #683737;
+  }
 }
-.player--second {
-  background: #683737;
-}
+
 
 .gainPoint {
   width: 20px;
