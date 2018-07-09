@@ -5,16 +5,23 @@
 	height: ~"calc(100vh - 46px)";
 	float: left;
 	&__all {
-		width: ~"calc(70% - 64px)";
+		width: ~"calc(65% - 64px)";
 		height: ~"calc(100% - 64px)";
 		float: left;
 		padding: 30px;
 	}
 	&__chosen {
-		width: ~"calc(30% - 64px)";
+		width: ~"calc(35% - 64px)";
 		height: ~"calc(100% - 104px)";
 		float: left;
 		padding: 30px;
+	}
+	&__all, &__chosen {
+		& ul {
+			float: left;
+			margin: 10px 20px 10px 20px;
+			padding: 0px;
+		}
 	}
 	&--border {
     border: solid 2px @structureColor;
