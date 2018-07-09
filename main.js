@@ -9,7 +9,15 @@ export let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 400});
+  mainWindow = new BrowserWindow({ // Instantiate the browser window.
+    width: 800,
+    height: 450,
+    minWidth: 500,
+    minHeight: 400,
+    webPreferences: {
+      preload: path.join(__dirname, './src/scripts/preload.js')
+    }
+  }); 
 
   // and load the index.html of the sources.
   mainWindow.loadURL(url.format({
@@ -19,7 +27,7 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -28,34 +36,6 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-
-  let menu = Menu.buildFromTemplate([
-    {
-      label: 'Menu',
-      submenu: [
-        {label: 'Create boards'},
-        {label: 'Set boards'},
-        {type: 'separator'},
-        {
-          label: 'Web page',
-          click() {
-            shell.openExternal('http://poyters.pl');
-          }
-        },
-        {label: 'Exit'}
-      ]
-    },
-    {
-      label: 'Help',
-      submenu: [
-        {label: 'Settings'},
-        {label: 'How to create board'},
-        {label: 'How to add board'}
-      ]
-    }
-  ]);
-
-  Menu.setApplicationMenu(menu);
 };
 
 // This method will be called when Electron has finished

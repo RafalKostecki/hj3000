@@ -1,27 +1,39 @@
 @import 'index.less';
 
-.card {
-  width: 50%;
-  height: ~"calc(100vh - 46px)";
+.menu {
+  width: 80%;
+  height: auto;
   float: left;
-  &__box {
-    width: ~"calc(100% - 4px)";
-    height: ~"calc(50% - 5vh + 4px)";
+  padding: 20vh 10% 0 10%;
+  &__content {
+    width: 100%;
     float: left;
-    padding-top: ~"calc(50% - 5vh)";
-  }
-  &--title {
-    text-transform: uppercase;
-    letter-spacing: 0.5vw;
-    font-size: 10vh;
-    text-align: center;
-    line-height: 12vh;
-    &:hover {
-      transition: ease-in-out 0.35s;
-      color: @txtColorHover;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    & li {
+      text-transform: uppercase;
+      letter-spacing: 0.6vw;
+      font-size: 6vh;
+      text-align: center;
+      line-height: 7.5vh;
+      padding: 6px 0 6px 0;
+      &:nth-child(3) {
+        margin-top: 6vh;
+      }
+      &:hover {
+        transition: ease-in-out 0.35s;
+        color: @txtColorHover;
+        cursor: pointer;
+      }
     }
   }
-  &--border {
-    border: solid 2px @structureColor
+  &--addon {
+    font-size: 4vh !important;
+    letter-spacing: 0.45vw !important;
+    line-height: 4.5vh !important;
+  }
+  &--topBorder {
+    border-top: 2px solid @structureColor;
   }
 }
