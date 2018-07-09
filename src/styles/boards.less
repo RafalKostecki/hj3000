@@ -1,0 +1,35 @@
+@import 'index.less';
+
+.boards {
+	width: 100%;
+	height: ~"calc(100vh - 46px)";
+	float: left;
+	&__all {
+		width: ~"calc(70% - 64px)";
+		height: ~"calc(100% - 64px)";
+		float: left;
+		padding: 30px;
+	}
+	&__chosen {
+		width: ~"calc(30% - 64px)";
+		height: ~"calc(100% - 104px)";
+		float: left;
+		padding: 30px;
+	}
+	&--border {
+    border: solid 2px @structureColor;
+  }
+}
+.play {
+	width: ~"calc(30% - 4px)";
+	height: 40px;
+	float: left;
+	&__box {
+		width: ~"calc(100% - 20px)";
+		height: 20px;
+		margin: 10px;
+	}
+	&--border {
+		border: 2px solid @structureColor;
+	}
+}

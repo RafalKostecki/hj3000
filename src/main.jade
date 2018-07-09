@@ -1,0 +1,40 @@
+html
+  head
+    title hiper jumper 3000
+    meta(
+      charset ='Utf-8'
+      name ='viewport'
+      content ='width=device-width, initial-scale=1, maximum-scale=1'
+    )
+    meta(
+      name ='Keywords'
+      content = keywords
+    )
+    meta(
+      name = 'Description'
+      content = description
+    )
+    meta(
+      name ='Author'
+      content = author
+    )
+    link(rel='Shortcut icon' href = shortcutIcon)
+    link(rel='stylesheet' href='./styles/main.less' type='text/css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400')
+  body
+    header(id='title' class='title title--style')
+      div.title__lBox
+        h2 hiper jumper 3000
+      div.title__rBox
+        h4 created by 
+          a(href='http://poyters.pl') poyters.
+        h5 alpha 1.0.1
+    section.card
+      div.card__box.card--border
+        h1.card--title Create board
+    section.card
+      div.card__box.card--border
+        h1.card--title 
+          a(href='./public/boards.jade') Play
+    
+    

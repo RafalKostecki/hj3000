@@ -1,0 +1,27 @@
+@import 'index.less';
+
+.card {
+  width: 50%;
+  height: ~"calc(100vh - 46px)";
+  float: left;
+  &__box {
+    width: ~"calc(100% - 4px)";
+    height: ~"calc(50% - 5vh + 4px)";
+    float: left;
+    padding-top: ~"calc(50% - 5vh)";
+  }
+  &--title {
+    text-transform: uppercase;
+    letter-spacing: 0.5vw;
+    font-size: 10vh;
+    text-align: center;
+    line-height: 12vh;
+    &:hover {
+      transition: ease-in-out 0.35s;
+      color: @txtColorHover;
+    }
+  }
+  &--border {
+    border: solid 2px @structureColor
+  }
+}
