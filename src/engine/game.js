@@ -153,7 +153,7 @@ export const game = {
   },
 
   moveBoard: (type, char) => {
-    let charContainsClass = char.struct.classList.contains('player--first');
+    const charContainsClass = char.struct.classList.contains('player--first');
     if (!charContainsClass) return; //Prevent move board by two players
 
     let widthDebt = gameBoard.clientWidth-gameWindow.offsetWidth;

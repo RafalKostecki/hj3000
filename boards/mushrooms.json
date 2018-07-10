@@ -1,6 +1,6 @@
 {
   "name": "mushrooms",
-  "checked": false,
+  "checked": true,
   "player": {
     "x": 40,
     "y": 70
@@ -73,9 +73,14 @@
   },
   "ladders": [
     {
-      "x": 1105,
-      "y": 60,
-      "height": 440
+      "x": 1100, 
+      "y": 80, 
+      "height": 210
+    }, 
+    {
+      "x": 120, 
+      "y": 220, 
+      "height": 280
     }
   ],
   "structures": [

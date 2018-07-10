@@ -13,9 +13,9 @@ function checkGainedPoints(character, point) {
 
 
 function checkEndPoint(character) {
-  let endPoint = game.currentBoard.endPoint;
+  const endPoint = game.currentBoard.endPoint;
 
-  if ((endPoint[0]+10 > character.A[0] && endPoint[0]+10 < character.B[0]) && (endPoint[1]-4 > character.D[1] && endPoint[1]-4 < character.A[1])) {
+  if ((endPoint.x+10 > character.A[0] && endPoint.x+10 < character.B[0]) && (endPoint.y-4 > character.D[1] && endPoint.y-4 < character.A[1])) {
     character.canMove = false;
 
     if(!game.multiGame) game.endBoard();

@@ -17,7 +17,6 @@ export function loadBoards(func) {
           checkedBoards.push(file)
         }
   
-        console.log(typeof func)
         if (i=== dir.length-1 &&  typeof func === 'function') func();
       });
     }
