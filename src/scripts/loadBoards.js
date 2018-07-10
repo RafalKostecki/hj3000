@@ -19,7 +19,7 @@ fs.readdir('./boards', (err, dir) => {
 
 function showBoards() {
   const allBoardsDiv = document.getElementById('boardsAll');
-  const chosenBoardsDiv = document.getElementById
+  const chosenBoardsDiv = document.getElementById('boardsChosen')
 
   for (let board of allBoards) {
     const name = document.createElement('li');
