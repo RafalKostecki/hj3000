@@ -3,8 +3,11 @@ import { game } from './game.js';
 import { IisStruct, IisChar, IisPlayer, IisGainPoint} from './interface.js';
 import { GainPoint } from './gainPoint.js';
 import { Ladder } from './ladder.js';
+import { loadBoards, checkedBoards } from '../scripts/loadBoards.js'
 
 let gameBoard = document.getElementById('gameBoard');
+
+loadBoards();
 
 /*let levels = [
   [[playerX, playerY(start position), board width, board height], Player and board settings

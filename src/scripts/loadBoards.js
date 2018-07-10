@@ -1,7 +1,8 @@
 import fs from 'fs';
 
 export let allBoards = [];
-export let chosenBoards = [];
+export let chosenNames = [];
+export let checkedBoards = [];
 
 export function loadBoards(func) {
   fs.readdir('./boards', (err, dir) => {
@@ -11,9 +12,13 @@ export function loadBoards(func) {
         const file = JSON.parse(data);
   
         if (!file.checked) allBoards.push(file.name)
-        else chosenBoards.push(file.name)
+        else {
+          chosenNames.push(file.name)
+          checkedBoards.push(file)
+        }
   
-        if (i=== dir.length-1) func();
+        console.log(typeof func)
+        if (i=== dir.length-1 &&  typeof func === 'function') func();
       });
     }
   });

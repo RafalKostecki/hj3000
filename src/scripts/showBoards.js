@@ -1,7 +1,5 @@
-import { loadBoards, allBoards, chosenBoards } from '../scripts/loadBoards.js';
+import { loadBoards, allBoards, chosenNames } from '../scripts/loadBoards.js';
 
-console.log(allBoards)
-console.log(chosenBoards)
 const showBoards = () => {
   const allBoardsDiv = document.getElementById('boardsAll');
   const chosenBoardsDiv = document.getElementById('boardsChosen')
@@ -13,7 +11,7 @@ const showBoards = () => {
     allBoardsDiv.appendChild(name);
   }
 
-  for (let board of chosenBoards) {
+  for (let board of chosenNames) {
     const name = document.createElement('li');
     const content = document.createTextNode(board);
     name.appendChild(content);
