@@ -10,7 +10,7 @@ export let mainWindow;
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({ // Instantiate the browser window.
-    width: 800,
+    width: 1000,
     height: 450,
     minWidth: 500,
     minHeight: 400,
