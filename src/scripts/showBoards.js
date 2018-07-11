@@ -11,7 +11,7 @@ const showBoards = () => {
     name.appendChild(content);
     allBoardsDiv.appendChild(name);
 
-    if (board.file.checked) name.style.color = 'red';
+    if (board.file.checked) setChecked(name);
 
     name.addEventListener('click', () => switchCheck(board, name))
   }
@@ -20,8 +20,18 @@ const showBoards = () => {
 function switchCheck(board, name) {
   board.file.checked = !board.file.checked;
   fs.writeFileSync(board.path, JSON.stringify(board.file));
-  if (board.file.checked) name.style.color = 'red';
-  else name.style.color = 'inherit';
+  if (board.file.checked) setChecked(name);
+  else unChecked(name)
+}
+
+function setChecked(name) {
+  name.style.color = '#720b0b';
+  name.style.fontWeight = 'bold';
+}
+
+function unChecked(name) {
+  name.style.color = 'inherit';
+  name.style.fontWeight = 'normal';
 }
 
 loadBoards(showBoards)

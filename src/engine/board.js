@@ -12,7 +12,7 @@ loadBoards();
 const levels = checkedBoards;
 
 function addToPartOfMap(array, struct) {
-  //This function divde game board on three part. This behavior has prevent too many search structure in collisionSystem
+  //This function divde game board on three parts. This behavior has prevent too many search structure in collisionSystem
   //Left break points
   if (struct.B[0] < game.currentBoard.width/3) { //First part of map
     array[0].push(struct)

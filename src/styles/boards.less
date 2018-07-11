@@ -5,28 +5,34 @@
 	height: ~"calc(100vh - 46px)";
 	float: left;
 	&__all {
-		width: ~"calc(65% - 64px)";
-		height: ~"calc(100% - 64px)";
-		float: left;
-		padding: 30px;
-	}
-	&__chosen {
-		width: ~"calc(35% - 64px)";
+		width: ~"calc(100% - 64px)";
 		height: ~"calc(100% - 104px)";
 		float: left;
 		padding: 30px;
-	}
-	&__all, &__chosen {
 		& ul {
+      width: ~"calc(100% - 40px)";
 			float: left;
 			margin: 10px 20px 10px 20px;
-			padding: 0px;
+      padding: 0px;
+      & li {
+        width: ~"calc(33.3333% - 40px)";
+        padding: 0 10px 0 10px;
+        margin: 0 10px 0 10px;
+        float: left;
+        cursor: pointer;
+      }
 		}
+	}
+	&__desc {
+		width: ~"calc(65% - 4px)";
+		height: 40px;
+		float: left;
 	}
 	&--border {
     border: solid 2px @structureColor;
   }
 }
+
 .play {
 	width: ~"calc(35% - 4px)";
 	height: 40px;
