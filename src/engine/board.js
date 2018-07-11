@@ -44,7 +44,7 @@ function countPoints(lvl) {
   let result = 0;
 
   for (let i = 0; i<lvl; i++) {
-    result += levels[lvl-1][1].length;
+    result += levels[lvl-1].gainPoints.length;
   }
 
   return result;
@@ -68,6 +68,7 @@ export class Board {
       [],
     ];
     this.requiredPoints = levels[this.level].gainPoints.length;
+    console.log('required points: ' + this.requiredPoints)
     this.endPoint = levels[this.level].endPoint;
 
     this.width = levels[this.level].board.width;
