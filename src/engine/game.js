@@ -2,7 +2,6 @@ import { Collisions } from './collisions.js';
 import { PlayerControl } from './playerControl.js';
 import { Player } from './player.js';
 import { Board } from './board.js';
-import { mainWindow } from './index.js';
 
 
 let gameBoard = document.getElementById('gameBoard');

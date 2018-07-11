@@ -1,4 +1,3 @@
-import Interface from './interface.js';
 import { PlayerControl } from './playerControl.js';
 import { game } from './game.js';
 

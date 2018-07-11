@@ -11,13 +11,13 @@ loadBoards();
 
 const levels = checkedBoards;
 
-function addToPartOfMap(array, struct) {
+function addToPartOfMap(array, struct, boardWidth) {
   //This function divde game board on three parts. This behavior has prevent too many search structure in collisionSystem
   //Left break points
-  if (struct.B[0] < game.currentBoard.width/3) { //First part of map
+  if (struct.B[0] < boardWidth/3) { //First part of map
     array[0].push(struct)
   }
-  else if (struct.B[0] >= game.currentBoard.width/3 && struct.B[0] < (game.currentBoard.width/3)*2) { //Second part of map
+  else if (struct.B[0] >= boardWidth/3 && struct.B[0] < (boardWidth/3)*2) { //Second part of map
     array[1].push(struct)
   }
   else { //Third part of map
@@ -25,11 +25,11 @@ function addToPartOfMap(array, struct) {
   }
 
   //Right break points
-  if (struct.A[0] < game.currentBoard.width/3) { //First part of map
+  if (struct.A[0] < boardWidth/3) { //First part of map
     if (array[0].indexOf(struct) > -1) return; //If a hole structure is in the one part of map this conditional statement prevent multiple add the same structure to the same part of map
     array[0].push(struct)
   }
-  else if (struct.A[0] >= game.currentBoard.width/3 && struct.A[0] < (game.currentBoard.width/3)*2) { //Second part of map
+  else if (struct.A[0] >= boardWidth/3 && struct.A[0] < (boardWidth/3)*2) { //Second part of map
     if (array[1].indexOf(struct) > -1) return;
     array[1].push(struct)
   }
@@ -52,7 +52,7 @@ function countPoints(lvl) {
 
 
 
-export class Board {
+class Board {
   constructor(lvl) {
     this.level = lvl;
     this.quantityOfLvls = levels.length;
@@ -68,7 +68,6 @@ export class Board {
       [],
     ];
     this.requiredPoints = levels[this.level].gainPoints.length;
-    console.log('required points: ' + this.requiredPoints)
     this.endPoint = levels[this.level].endPoint;
 
     this.width = levels[this.level].board.width;
@@ -87,6 +86,7 @@ export class Board {
 
     IisPlayer.isIplementedBy(game.player);
     game.player.createStruct(25, 40, levels[lvl].player.x, levels[lvl].player.y);
+    game.player.addToBoard();
     game.player.collisionCounter = 1;
 
     if (game.multiGame) {
@@ -100,10 +100,11 @@ export class Board {
       this.addScruct(struct);
 
       struct.createStruct(levels[lvl].structures[i].width, levels[lvl].structures[i].height, levels[lvl].structures[i].x, levels[lvl].structures[i].y);
+      struct.addToBoard();
 
       this.collisionLinesY.push([struct.id, struct.D[1]])
 
-      addToPartOfMap(this.partOfMap, struct);
+      addToPartOfMap(this.partOfMap, struct, game.currentBoard.width);
     }
 
     game.player.jumpCollision = this.structs[0].id;
@@ -165,3 +166,5 @@ export class Board {
   };
 
 }
+
+export { Board, addToPartOfMap, countPoints}

@@ -17,8 +17,11 @@ export class Structure {
     this.struct.style.height = height + 'px';
     this.struct.style.left = x + 'px';
     this.struct.style.top = y + 'px';
-    gameBoard.appendChild(this.struct);
   };
+
+  addToBoard() {
+    gameBoard.appendChild(this.struct);
+  }
 
   changePosition(changeX, changeY, vector=this.vector) {
     this.struct.style.left = this.D[0] + changeX + 'px';
