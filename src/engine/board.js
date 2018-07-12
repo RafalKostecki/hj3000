@@ -1,11 +1,11 @@
 import { Structure } from './structure.js'
 import { game } from './game.js';
-import { IisStruct, IisChar, IisPlayer, IisGainPoint} from './interface.js';
+import { IisStruct, IisPlayer, IisGainPoint} from './interface.js';
 import { GainPoint } from './gainPoint.js';
 import { Ladder } from './ladder.js';
 import { loadBoards, checkedBoards } from '../scripts/loadBoards.js'
 
-let gameBoard = document.getElementById('gameBoard');
+const gameBoard = document.getElementById('gameBoard');
 
 loadBoards();
 
@@ -81,11 +81,11 @@ class Board {
       game.player2.collisionCounter = 1;
     }
 
-    for (let i = 0; i< levels[lvl].structures.length; i++) {
+    for (let structure of levels[lvl].structures) {
       const struct = new Structure('barrier barrier--style');
       this.addScruct(struct);
 
-      struct.createStruct(levels[lvl].structures[i].width, levels[lvl].structures[i].height, levels[lvl].structures[i].x, levels[lvl].structures[i].y);
+      struct.createStruct(structure.width, structure.height, structure.x, structure.y);
       struct.addToBoard();
 
       this.collisionLinesY.push([struct.id, struct.D[1]])
@@ -103,10 +103,10 @@ class Board {
   };
 
   addGainPoints(stages=levels, create=true) { //Default set at true, so we want to also add gainPoint to gameBoard
-    for (let i=0; i<stages[this.level].gainPoints.length; i++) {
+    for (let gp of stages[this.level].gainPoints) {
       const gainPoint = new GainPoint();
 
-      if (create) gainPoint.create(stages[this.level].gainPoints[i].x, stages[this.level].gainPoints[i].y);
+      if (create) gainPoint.create(gp.x, gp.y);
 
       IisGainPoint.isIplementedBy(gainPoint);
       this.gainPoints.push(gainPoint);
@@ -123,10 +123,10 @@ class Board {
   };
 
   addLadders(stages=levels, create=true) { //Default set at true, so we want to also add addLadders to gameBoard
-    for (let i=0; i<stages[this.level].ladders.length; i++) {
+    for (let lad of stages[this.level].ladders) {
       const ladder = new Ladder();
 
-      if (create) ladder.createLadder(stages[this.level].ladders[i].x, stages[this.level].ladders[i].y, stages[this.level].ladders[i].height);
+      if (create) ladder.createLadder(lad.x, lad.y, lad.height);
 
       this.ladders.push(ladder);
     }
@@ -136,9 +136,9 @@ class Board {
     let size;
 
     let result = 3000;
-    for (let i=0; i<stages.length; i++) {
-      if (type === 0) size = stages[i].board.width;
-      else if (type === 1) size = stages[i].board.height;
+    for (let stage of stages) {
+      if (type === 0) size = stage.board.width;
+      else if (type === 1) size = stage.board.height;
       
       if(size < result) result = size;
     }
