@@ -31,8 +31,9 @@ export class Structure {
   };
 
   changeShape(width, height) {
-    this.struct.style.width = width;
-    this.struct.style.height = height;
+    console.log(width)
+    this.struct.style.width = width + 'px';
+    this.struct.style.height = height + 'px';
   };
 
   get A() { //point A[x,y]
