@@ -102,10 +102,11 @@ class Board {
     this.structs.push(struct);
   };
 
-  addGainPoints() {
-    for (let i=0; i<levels[this.level].gainPoints.length; i++) {
+  addGainPoints(stages=levels, create=true) { //Default set at true, so we want to also add gainPoint to gameBoard
+    for (let i=0; i<stages[this.level].gainPoints.length; i++) {
       const gainPoint = new GainPoint();
-      gainPoint.create(levels[this.level].gainPoints[i].x, levels[this.level].gainPoints[i].y);
+
+      if (create) gainPoint.create(stages[this.level].gainPoints[i].x, stages[this.level].gainPoints[i].y);
 
       IisGainPoint.isIplementedBy(gainPoint);
       this.gainPoints.push(gainPoint);
@@ -121,25 +122,25 @@ class Board {
     gameBoard.appendChild(endPoint);
   };
 
-  addLadders() {
-    for (let i=0; i<levels[this.level].ladders.length; i++) {
+  addLadders(stages=levels, create=true) { //Default set at true, so we want to also add addLadders to gameBoard
+    for (let i=0; i<stages[this.level].ladders.length; i++) {
       const ladder = new Ladder();
-      ladder.createLadder(levels[this.level].ladders[i].x, levels[this.level].ladders[i].y, levels[this.level].ladders[i].height);
+
+      if (create) ladder.createLadder(stages[this.level].ladders[i].x, stages[this.level].ladders[i].y, stages[this.level].ladders[i].height);
 
       this.ladders.push(ladder);
     }
   };
 
-  theSmallestSize(type) { //type: 0-width or 1-height
+  theSmallestSize(type, stages=levels) { //type: 0-width or 1-height
     let size;
 
-    if (type === 0) size = 'width';
-    else if (type === 1) size = 'height';
-    else throw new Error('Invalid value of type size.')
-
-    let result = 2000;
-    for (let i=0; i<levels.length; i++) {
-      if(levels[i].board.size < result) result = levels[i].board.size;
+    let result = 3000;
+    for (let i=0; i<stages.length; i++) {
+      if (type === 0) size = stages[i].board.width;
+      else if (type === 1) size = stages[i].board.height;
+      
+      if(size < result) result = size;
     }
 
     return result;

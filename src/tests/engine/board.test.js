@@ -1,6 +1,7 @@
 import { Board, addToPartOfMap } from '../../engine/board.js'
 import { Structure } from '../../engine/structure.js'
 
+
 let partsOfMap = [
 	[],
 	[],
@@ -43,7 +44,7 @@ const boards = [
 		"board":
 		{
 			"width":2100,
-			"height":900
+			"height":1000
 		},
 		"gainPoints":
 		[
@@ -66,6 +67,20 @@ const boards = [
 		[
 			{"width":50,"height":30,"x":780,"y":320}
 		]
+	},
+	{
+		"name":"testBoard2",
+		"checked":true,
+		"player":{"x":40,"y":70},
+		"board":
+		{
+			"width":2300,
+			"height":900
+		},
+		"gainPoints": [],
+		"endPoint": {},
+		"ladders": [],
+		"structures": []
 	}
 ];
 
@@ -76,7 +91,7 @@ it ('Board class: lvl property', () => {
 })
 
 it ('Board class: quentityOfLevels property', () => {
-	expect(board.quantityOfLvls).toBe(1)
+	expect(board.quantityOfLvls).toBe(2)
 })
 
 it ('Board class: requiredPoints property', () => {
@@ -92,7 +107,7 @@ it ('Board class: width property', () => {
 })
 
 it ('Board class: height property', () => {
-	expect(board.height).toBe(900)
+	expect(board.height).toBe(1000)
 })
 
 it ('Board class: addStruct func and structs property', () => {
@@ -100,7 +115,20 @@ it ('Board class: addStruct func and structs property', () => {
 	expect(board.structs.length).toBe(1)
 })
 
-it ('Board class: addStruct func and structs property', () => {
-	board.addScruct(struct)
-	expect(board.structs.length).toBe(1)
+it ('Board class: addGainPoints func and gainPoints property', () => {
+	board.addGainPoints(boards, false)
+	expect(board.gainPoints.length).toBe(2)
+})
+
+it ('Board class: addLadders func and ladders property', () => {
+	board.addLadders(boards, false)
+	expect(board.ladders.length).toBe(1)
+})
+
+it ('Boards sizes (Example width)', () => {
+	expect(Board.prototype.theSmallestSize(0, boards)).toBe(2100);
+})
+
+it ('Boards sizes (Example height)', () => {
+	expect(Board.prototype.theSmallestSize(1, boards)).toBe(900);
 })
