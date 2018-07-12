@@ -1,4 +1,4 @@
-let gameBoard = document.getElementById('gameBoard');
+const gameBoard = document.getElementById('gameBoard');
 
 export class Ladder {
   constructor() {
@@ -10,6 +10,9 @@ export class Ladder {
     this.div.style.left = left + 'px';
     this.div.style.top = top + 'px';
     this.div.style.height = height + 'px';
+  };
+
+  addToBoard() {
     gameBoard.appendChild(this.div);
   };
 

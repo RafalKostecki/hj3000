@@ -126,7 +126,10 @@ class Board {
     for (let lad of stages[this.level].ladders) {
       const ladder = new Ladder();
 
-      if (create) ladder.createLadder(lad.x, lad.y, lad.height);
+      if (create) {
+        ladder.createLadder(lad.x, lad.y, lad.height)
+        ladder.addToBoard()
+      }
 
       this.ladders.push(ladder);
     }
