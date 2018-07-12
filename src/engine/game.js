@@ -83,7 +83,11 @@ export const game = {
     this.start = true;
 
     this.currentBoard = new Board(this.currentLvl);
+    this.currentBoard.setGameBoard();
     this.currentBoard.createBoard();
+    this.currentBoard.addGainPoints();
+    this.currentBoard.setEndPoint();
+    this.currentBoard.addLadders();
 
     gameBoard.style.top = 0;
     gameBoard.style.left = 0;

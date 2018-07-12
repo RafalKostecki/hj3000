@@ -5,8 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "jest",
-    "watch": "jest --watch"
+    "test": "jest"
   },
   "author": "Rafał Gabriel Kostecki",
   "license": "MIT",

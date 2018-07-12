@@ -39,23 +39,11 @@ function addToPartOfMap(array, struct, boardWidth) {
   }
 };
 
-function countPoints(lvl) {
-  lvl++;
-  let result = 0;
-
-  for (let i = 0; i<lvl; i++) {
-    result += levels[lvl-1].gainPoints.length;
-  }
-
-  return result;
-};
-
-
 
 class Board {
-  constructor(lvl) {
+  constructor(lvl, stages=levels) {
     this.level = lvl;
-    this.quantityOfLvls = levels.length;
+    this.quantityOfLvls = stages.length;
 
     this.collisionLinesY = []; //This array includes values in OY axis were are structs. The value is a s.D[1] point, the highest edgy of structure
     this.structs = []; //This array includes every structures of board (one level)
@@ -67,22 +55,20 @@ class Board {
       [],
       [],
     ];
-    this.requiredPoints = levels[this.level].gainPoints.length;
-    this.endPoint = levels[this.level].endPoint;
+    this.requiredPoints = stages[this.level].gainPoints.length;
+    this.endPoint = stages[this.level].endPoint;
 
-    this.width = levels[this.level].board.width;
-    this.height = levels[this.level].board.height;
-
-    gameBoard.style.width = this.width + 'px';
-    gameBoard.style.height = this.height + 'px';
+    this.width = stages[this.level].board.width;
+    this.height = stages[this.level].board.height;
   };
 
-  createBoard() {
-    let lvl = this.level;
+  setGameBoard() {
+    gameBoard.style.width = this.width + 'px';
+    gameBoard.style.height = this.height + 'px';
+  }
 
-    this.addGainPoints(lvl);
-    this.setEndPoint();
-    this.addLadders(lvl);
+  createBoard() {
+    const lvl = this.level;
 
     IisPlayer.isIplementedBy(game.player);
     game.player.createStruct(25, 40, levels[lvl].player.x, levels[lvl].player.y);
@@ -122,10 +108,10 @@ class Board {
     this.chars.push(char);
   };
 
-  addGainPoints(lvl) {
-    for (let i=0; i<levels[lvl].gainPoints.length; i++) {
+  addGainPoints() {
+    for (let i=0; i<levels[this.level].gainPoints.length; i++) {
       const gainPoint = new GainPoint();
-      gainPoint.create(levels[lvl].gainPoints[i].x, levels[lvl].gainPoints[i].y);
+      gainPoint.create(levels[this.level].gainPoints[i].x, levels[this.level].gainPoints[i].y);
 
       IisGainPoint.isIplementedBy(gainPoint);
       this.gainPoints.push(gainPoint);
@@ -141,10 +127,10 @@ class Board {
     gameBoard.appendChild(endPoint);
   };
 
-  addLadders(lvl) {
-    for (let i=0; i<levels[lvl].ladders.length; i++) {
+  addLadders() {
+    for (let i=0; i<levels[this.level].ladders.length; i++) {
       const ladder = new Ladder();
-      ladder.createLadder(levels[lvl].ladders[i].x, levels[lvl].ladders[i].y, levels[lvl].ladders[i].height);
+      ladder.createLadder(levels[this.level].ladders[i].x, levels[this.level].ladders[i].y, levels[this.level].ladders[i].height);
 
       this.ladders.push(ladder);
     }
@@ -167,4 +153,4 @@ class Board {
 
 }
 
-export { Board, addToPartOfMap, countPoints}
+export { Board, addToPartOfMap }
