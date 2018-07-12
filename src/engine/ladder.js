@@ -16,15 +16,15 @@ export class Ladder {
     gameBoard.appendChild(this.div);
   };
 
-  get top() { //point A[x,y]
-      return parseInt(this.div.style.top);
+  get top() { 
+    return parseInt(this.div.style.top);
   };
 
-  get bottom() { //point A[x,y]
-      return (parseInt(this.div.style.top) + parseInt(this.div.style.height));
+  get bottom() { 
+    return (parseInt(this.div.style.top) + parseInt(this.div.style.height));
   };
 
-  get left() { //point A[x,y]
-      return parseInt(this.div.style.left);
+  get left() { 
+    return parseInt(this.div.style.left);
   };
 }

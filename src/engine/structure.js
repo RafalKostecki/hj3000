@@ -1,4 +1,4 @@
-let gameBoard = document.getElementById('gameBoard');
+const gameBoard = document.getElementById('gameBoard');
 let idCounter = 0;
 
 export class Structure {
@@ -21,7 +21,7 @@ export class Structure {
 
   addToBoard() {
     gameBoard.appendChild(this.struct);
-  }
+  };
 
   changePosition(changeX, changeY, vector=this.vector) {
     this.struct.style.left = this.D[0] + changeX + 'px';
@@ -49,5 +49,13 @@ export class Structure {
 
   get D() { //point D
     return [parseInt(this.struct.style.left), parseInt(this.struct.style.top)]
+  };
+
+  get width() { //point D
+    return parseInt(this.struct.style.width)
+  };
+
+  get height() { //point D
+    return parseInt(this.struct.style.height)
   };
 }
