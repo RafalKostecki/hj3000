@@ -8,7 +8,7 @@ let partsOfMap = [
 ];
 const struct = new Structure();
 
-it('addToPartOfMap divide map(0)', () => {
+it('Board: addToPartOfMap divide map (Example 0)', () => {
 	struct.createStruct(30, 30, 0, 100);
 	addToPartOfMap(partsOfMap, struct, 1500)
 
@@ -17,7 +17,7 @@ it('addToPartOfMap divide map(0)', () => {
 	).toBe(1)
 })
 
-it('addToPartOfMap divide map(1)', () => {
+it('Board: addToPartOfMap divide map (Example 1)', () => {
 	struct.createStruct(30, 30, 1110, 100);
 	addToPartOfMap(partsOfMap, struct, 3000)
 
@@ -26,7 +26,7 @@ it('addToPartOfMap divide map(1)', () => {
 	).toBe(1)
 })
 
-it('addToPartOfMap divide map(2)', () => {
+it('Board: addToPartOfMap divide map (Example 2)', () => {
 	struct.createStruct(30, 30, 900, 100);
 	addToPartOfMap(partsOfMap, struct, 1200)
 
@@ -71,26 +71,36 @@ const boards = [
 
 const board = new Board(0, boards)
 
-it ('Board class lvl property', () => {
+it ('Board class: lvl property', () => {
 	expect(board.level).toBe(0)
 })
 
-it ('Board class quentityOfLevels property', () => {
+it ('Board class: quentityOfLevels property', () => {
 	expect(board.quantityOfLvls).toBe(1)
 })
 
-it ('Board class requiredPoints property', () => {
+it ('Board class: requiredPoints property', () => {
 	expect(board.requiredPoints).toBe(2)
 })
 
-it ('Board class endPoint property', () => {
+it ('Board class: endPoint property', () => {
 	expect(board.endPoint).toBe(boards[0].endPoint)
 })
 
-it ('Board class width property', () => {
+it ('Board class: width property', () => {
 	expect(board.width).toBe(2100)
 })
 
-it ('Board class height property', () => {
+it ('Board class: height property', () => {
 	expect(board.height).toBe(900)
+})
+
+it ('Board class: addStruct func and structs property', () => {
+	board.addScruct(struct)
+	expect(board.structs.length).toBe(1)
+})
+
+it ('Board class: addStruct func and structs property', () => {
+	board.addScruct(struct)
+	expect(board.structs.length).toBe(1)
 })

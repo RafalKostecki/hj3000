@@ -41,7 +41,7 @@ function addToPartOfMap(array, struct, boardWidth) {
 
 
 class Board {
-  constructor(lvl, stages=levels) {
+  constructor(lvl, stages=levels, gameOperator=game) {
     this.level = lvl;
     this.quantityOfLvls = stages.length;
 
@@ -100,12 +100,6 @@ class Board {
   addScruct(struct) {
     IisStruct.isIplementedBy(struct);
     this.structs.push(struct);
-  };
-
-  addChar(char) {
-    IisChar.isIplementedBy(char);
-    IisStruct.isIplementedBy(char);
-    this.chars.push(char);
   };
 
   addGainPoints() {
