@@ -31,7 +31,6 @@ export class Structure {
   };
 
   changeShape(width, height) {
-    console.log(width)
     this.struct.style.width = width + 'px';
     this.struct.style.height = height + 'px';
   };

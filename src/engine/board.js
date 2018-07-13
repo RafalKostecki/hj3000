@@ -106,7 +106,10 @@ class Board {
     for (let gp of stages[this.level].gainPoints) {
       const gainPoint = new GainPoint();
 
-      if (create) gainPoint.create(gp.x, gp.y);
+      if (create) {
+        gainPoint.create(gp.x, gp.y);
+        gainPoint.addToBoard();
+      }
 
       IisGainPoint.isIplementedBy(gainPoint);
       this.gainPoints.push(gainPoint);

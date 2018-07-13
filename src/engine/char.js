@@ -16,9 +16,10 @@ export const char = (lifes) => ({
 
   move: (direction, char, movementSpeed) => {
     IisStruct.isIplementedBy(char);
-    let boundElement = Structure.prototype.changePosition.bind(char);
+    const boundElement = Structure.prototype.changePosition.bind(char);
+
     if (direction === 0) { //Left
-      let changeValue = Math.abs(movementSpeed) * (-1);
+      const changeValue = Math.abs(movementSpeed) * (-1);
       boundElement(changeValue, null, -1);
     }
     else if (direction === 1) { //Right
@@ -31,8 +32,8 @@ export const char = (lifes) => ({
     if (char.isJumping) return;
 
     IisStruct.isIplementedBy(char);
-    let boundElement = Structure.prototype.changePosition.bind(char);
-    let vector = (char).vector;
+    const boundElement = Structure.prototype.changePosition.bind(char);
+    const vector = (char).vector;
     char.isJumping = true;
 
     for (let i=0; i<9 && char.isJumping; i++) { //up

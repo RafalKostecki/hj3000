@@ -1,14 +1,14 @@
 import { game } from './game.js'
 
-let gameBoard = document.getElementById('gameBoard');
+const gameBoard = document.getElementById('gameBoard');
 let idCounter = 0;
 
 
 function destroy(point) {
-  let id = 'gainPoint' + point.id;
+  const id = 'gainPoint' + point.id;
   document.getElementById(id).remove()
-  let array = game.currentBoard.gainPoints;
-  let index = array.indexOf(point);
+  const array = game.currentBoard.gainPoints;
+  const index = array.indexOf(point);
   array.splice(index, 1);
 };
 
@@ -20,7 +20,7 @@ function setStyle(point, style='gainPoint gainPoint--style') {
 };
 
 
-export class GainPoint {
+class GainPoint {
   constructor() {
     this.gained = 0;
     this.gainPoint = document.createElement('div');
@@ -30,8 +30,8 @@ export class GainPoint {
   };
 
   pick(char) {
-    let charContainsClass = char.struct.classList.contains('player--first');
-    let id = charContainsClass ? 0 : 1;
+    const charContainsClass = char.struct.classList.contains('player--first');
+    const id = charContainsClass ? 0 : 1;
     let style;
     this.gained++;
 
@@ -50,6 +50,19 @@ export class GainPoint {
     setStyle(this);
     this.gainPoint.style.left = x + 'px';
     this.gainPoint.style.top = y + 'px';
+  };
+
+  addToBoard() {
     gameBoard.appendChild(this.gainPoint);
   };
+
+  get left() {
+    return parseInt(this.gainPoint.style.left)
+  };
+
+  get top() {
+    return parseInt(this.gainPoint.style.top)
+  };
 }
+
+export { GainPoint, destroy, setStyle }

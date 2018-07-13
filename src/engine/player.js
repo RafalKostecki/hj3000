@@ -1,13 +1,13 @@
 import { Structure } from './structure.js';
 import { char } from './char.js';
 import { game } from './game.js';
-//import { GainPoint } from './gainPoint.js'
 
-function checkGainedPoints(character, point) {
-  let gp = character.gainedPoints;
 
-  for (let i=0; i<gp.length; i++) {
-    if (point.id === gp[i]) return true;
+function checkGainedPoints(character, gainPoint) {
+  const gained = character.gainedPoints;
+
+  for (let point of gained) {
+    if (gainPoint.id === point) return true;
   }
 };
 
@@ -25,7 +25,7 @@ function checkEndPoint(character) {
 };
 
 
-export class Player extends Structure {
+class Player extends Structure {
   constructor(style, width, height, x, y) {
     super(style, width, height, x, y);
     this.gainedPoints = [];
@@ -57,15 +57,15 @@ export class Player extends Structure {
   };
 
   climbingLadder(type) { //0-up, 1-down
-    let ladders = game.currentBoard.ladders;
+    const ladders = game.currentBoard.ladders;
 
     for (let i=0; i<ladders.length; i++) {
       if ((this.B[0] + 6 >= ladders[i].left && this.A[0] -11 <= ladders[i].left) && (this.A[1]-1 <= ladders[i].bottom && this.D[1] >= ladders[i].top)) {
         this.collisionStruct = 0;
         this.onStruct = false;
 
-        let xDebt = ladders[i].left - this.D[0] - 10;
-        let yDebt = ladders[i].top - this.D[1];
+        const xDebt = ladders[i].left - this.D[0] - 10;
+        const yDebt = ladders[i].top - this.D[1];
         this.changePosition(xDebt, yDebt);
 
         for (let i=0; i<(yDebt*-1) /2.7; i++) {
@@ -80,11 +80,11 @@ export class Player extends Structure {
       checkEndPoint(this);
       return;
     }
-    let gainPoints = game.currentBoard.gainPoints;
+    const gainPoints = game.currentBoard.gainPoints;
 
     for (let i=0; i<gainPoints.length; i++) {
-      let gainPointX = parseInt(gainPoints[i].gainPoint.style.left) + 10;
-      let gainPointY = parseInt(gainPoints[i].gainPoint.style.top) + 10;
+      const gainPointX = parseInt(gainPoints[i].gainPoint.style.left) + 10;
+      const gainPointY = parseInt(gainPoints[i].gainPoint.style.top) + 10;
 
       if ((gainPointX > this.A[0] && gainPointX < this.B[0]) && (gainPointY > this.D[1] && gainPointY < this.A[1])) {
         if(!checkGainedPoints(this, gainPoints[i])) {
@@ -130,3 +130,5 @@ export class Player extends Structure {
 }
 
 Object.assign(Player.prototype, char(10));
+
+export { Player, checkGainedPoints }
