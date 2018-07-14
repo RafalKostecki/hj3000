@@ -56,7 +56,7 @@ class Player extends Structure {
     }
   };
 
-  climbingLadder(type) { //0-up, 1-down
+  climbingLadder() { //0-up, 1-down
     const ladders = game.currentBoard.ladders;
 
     for (let i=0; i<ladders.length; i++) {
@@ -82,16 +82,16 @@ class Player extends Structure {
     }
     const gainPoints = game.currentBoard.gainPoints;
 
-    for (let i=0; i<gainPoints.length; i++) {
-      const gainPointX = parseInt(gainPoints[i].gainPoint.style.left) + 10;
-      const gainPointY = parseInt(gainPoints[i].gainPoint.style.top) + 10;
+    for (let gp of gainPoints) {
+      const gainPointX = parseInt(gp.gainPoint.style.left) + 10;
+      const gainPointY = parseInt(gp.gainPoint.style.top) + 10;
 
       if ((gainPointX > this.A[0] && gainPointX < this.B[0]) && (gainPointY > this.D[1] && gainPointY < this.A[1])) {
-        if(!checkGainedPoints(this, gainPoints[i])) {
+        if(!checkGainedPoints(this, gp)) {
           this.score++;
           this.gp++;
-          this.gainedPoints.push(gainPoints[i].id);
-          gainPoints[i].pick(this)
+          this.gainedPoints.push(gp.id);
+          gp.pick(this)
           game.setStats(0, this, this.score);
         }
         else return;

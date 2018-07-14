@@ -78,6 +78,7 @@ class Board {
     if (game.multiGame) {
       IisPlayer.isIplementedBy(game.player2);
       game.player2.createStruct(25, 40, levels[lvl].player.x, levels[lvl].player.y);
+      game.player2.addToBoard();
       game.player2.collisionCounter = 1;
     }
 

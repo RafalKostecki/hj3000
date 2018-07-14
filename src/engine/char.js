@@ -2,6 +2,24 @@ import { IisStruct } from './interface.js';
 import { game } from './game.js';
 import { Structure } from './structure.js';
 
+
+function jumpAnime(char) {
+  const boundElement = Structure.prototype.changePosition.bind(char);
+
+  if (game.collisionsSystem.movement(char, true)) char.isJumping = false;
+  else if (char.isJumping) {
+    const direction = char.counter <= 9 ? -5 : 5;
+    const turn = char.counter <= 9 ? 2 : 3;
+
+    boundElement(4*char.vector, direction);
+    game.moveBoard(turn, char);
+    if (char.counter % 2 === 0) char.vector === -1 ? game.moveBoard(0, char) : game.moveBoard(1, char);
+  }
+
+  char.counter++
+
+}
+
 export const char = (lifes) => ({
   life: lifes,
   //Below variables which are necessary to collision system
@@ -13,6 +31,7 @@ export const char = (lifes) => ({
   onStruct: false,
   //When this variable is equal to true, it means that player is jumping, right now.
   isJumping: false,
+  counter: 0,
 
   move: (direction, char, movementSpeed) => {
     IisStruct.isIplementedBy(char);
@@ -32,40 +51,19 @@ export const char = (lifes) => ({
     if (char.isJumping) return;
 
     IisStruct.isIplementedBy(char);
-    const boundElement = Structure.prototype.changePosition.bind(char);
-    const vector = (char).vector;
     char.isJumping = true;
 
-    for (let i=0; i<9 && char.isJumping; i++) { //up
-      setTimeout(() => {
-        if (game.collisionsSystem.movement(char, true)) char.isJumping = false;
-        else if (char.isJumping) {
-          boundElement(4*vector, -5);
-          game.moveBoard(2, char);
-          if (i%2===0) char.vector === -1 ? game.moveBoard(0, char) : game.moveBoard(1, char);
+    const interval = setInterval(
+      () => {
+        if (char.counter < 20) jumpAnime(char)
+        else {
+          char.counter = 0;
+          char.isJumping = false;
+          game.collisionsSystem.endJump(char);
+          window.clearInterval(interval)
         }
-      }, 15)
-    }
-
-    setTimeout(()=> {
-      for (let i=0; i<9 && char.isJumping; i++) { //down
-        setTimeout(() => {
-          if (game.collisionsSystem.movement(char, true)) char.isJumping = false;
-          else if (char.isJumping) {
-            boundElement(4*vector, 5);
-            game.moveBoard(4, char);
-            if (i%2===0) char.vector === -1 ? game.moveBoard(0, char) : game.moveBoard(1, char);
-          }
-        }, 15)
-      }
-    }, 200)
-
-    setTimeout(()=> {
-      if (!char.isJumping) return;
-        //This will be when player jumped off any structure and didn`t come across on any structure, so we have to run fallingSystem, what will cause a fall
-        char.isJumping = false;
-        game.collisionsSystem.endJump(char);
-      }, 360)
-
+      }, 15
+    )
   },
+
 })

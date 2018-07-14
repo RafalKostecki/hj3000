@@ -34,11 +34,6 @@ function changePosition(type, char, wDebt, hDebt, ladder) {
 
       gameBoard.style.top = (gameBoard.offsetTop - 2) + 'px';
     break;
-    case 4: //jump
-      if ((gameBoard.offsetTop <= hDebt*-1) || (char.A[1] < gameWindow.clientHeight/2)) return;
-
-      gameBoard.style.top = (gameBoard.offsetTop - 2) + 'px';
-    break;
   }
 };
 

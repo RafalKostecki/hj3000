@@ -27,3 +27,11 @@ it ('Char: move method (Example 2)', () => {
 	player.move(1, player, 10)
   expect(player.A).toEqual([105, 240])
 })
+
+it ('Char: jump method (Example 1)', () => {
+	player.jump(player)
+  expect(player.A).toEqual([155, 240])
+})
+
+
+
