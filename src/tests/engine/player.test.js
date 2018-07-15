@@ -29,8 +29,10 @@ it ('Char: move method (Example 2)', () => {
 })
 
 it ('Char: jump method (Example 1)', () => {
-	player.jump(player)
-  expect(player.A).toEqual([155, 240])
+  player.jump(player)
+  setTimeout(() => {
+    expect(player.A).toEqual([155, 240])
+  }, 150)
 })
 
 

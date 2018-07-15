@@ -48,10 +48,10 @@ export const char = (lifes) => ({
   },
 
   jump: (char) => {
-    if (char.isJumping) return;
+    if (char.isJumping) return
 
-    IisStruct.isIplementedBy(char);
-    char.isJumping = true;
+    IisStruct.isIplementedBy(char)
+    char.isJumping = true
 
     const interval = setInterval(
       () => {
