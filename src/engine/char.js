@@ -32,6 +32,7 @@ export const char = (lifes) => ({
   //When this variable is equal to true, it means that player is jumping, right now.
   isJumping: false,
   counter: 0,
+  isFalling: false,
 
   move: (direction, char, movementSpeed) => {
     IisStruct.isIplementedBy(char);

@@ -1,60 +1,73 @@
 import { game } from './game.js';
 import { IisChar } from './interface.js';
 
+
 function isBeyondBoard(char) {
-    if(char.A[0] <= 5 || char.B[0] >= game.currentBoard.width - 5) { //x-axis
-        if(char.isJumping) {
-            //if player wanted to jumpt beyond the board
-            char.onStruct = false;
-            char.isJumping = false;
-            fallingSystem(char)
+  if(char.A[0] <= 5 || char.B[0] >= game.currentBoard.width - 5) { //x-axis
+    if(char.isJumping) {
+      //if player wanted to jump beyond the board
+      char.onStruct = false;
+      char.isJumping = false;
+      fallingSystem(char)
+    }
+    return true;
+  }
+  else if(char.D[1] <= -5) {
+    char.onStruct = false;
+    char.isJumping = false;
+    fallingSystem(char)
+    return true;
+  }
+}
+
+
+function fallingCol(char, breakPoints) {
+  for (let bp of breakPoints) {
+    if (char.A[1] >= bp[1] && char.A[1] < bp[1] + 5) {  //y-axis
+      for(let struct of game.currentBoard.structs) {
+        if (struct.D[1] === bp[1]) {
+          if(char.B[0] > struct.A[0] && char.A[0] < struct.B[0]) { //x-axis
+            char.onStruct = true
+            //Disable create a new collision after fell on another structure
+            char.jumpCollision = struct.id
+            char.collisionCounter++
+            char.isFalling = true //Turn off interval
+            char.collisionStruct = struct
+            break
+          }
         }
-        return true;
+      }
     }
-    else if(char.D[1] <= -5) {
-        char.onStruct = false;
-        char.isJumping = false;
-        fallingSystem(char)
-        return true;
-    }
-};
+  }
+}
 
 
 function fallingSystem(char) {
   if (char.isJumping) return;
 
-  let breakPoint = game.currentBoard.collisionLinesY;
-  let condition = false;
+  const breakPoints = game.currentBoard.collisionLinesY;
 
-  while (char.A[1] < game.currentBoard.height && condition === false) {
-    for (let i=0; i<breakPoint.length; i++) {
-      if (char.A[1] >= breakPoint[i][1] && char.A[1] < breakPoint[i][1] + 5) {  //y-axis
-        for(let j=0; j<game.currentBoard.structs.length; j++) {
-          let struct = game.currentBoard.structs[j];
-          if (struct.D[1] === breakPoint[i][1]) {
-            if(char.B[0] > struct.A[0] && char.A[0] < struct.B[0]) { //x-axis
-              char.onStruct = true;
-              //Disable create a new collision after fell on another structure
-              char.jumpCollision = struct.id;
-              char.collisionCounter++;
-              condition = true; //Turn off while loop
-              break;
-            }
-          }
+  const interval = setInterval(
+    () => {
+      if (char.A[1] < game.currentBoard.height && !char.isFalling) {
+        fallingCol(char, breakPoints)
+        if(!char.onStruct) {
+          char.changePosition(0, 2)
+          game.moveBoard(3, char)
         }
       }
-    }
-
-    if(!char.onStruct) {
-      char.changePosition(0, 2);
-      game.moveBoard(3, char);
-    }
-  }
-};
+      else {
+        char.isFalling = false
+        window.clearInterval(interval)
+      }
+    }, 20
+  )
+} 
 
 
 function onStruct(char, struct) {
   if (struct === null) return;
+
 
   if (struct === 0 && char.A[1] <= game.currentBoard.height - 3) {
     fallingSystem(char);
@@ -94,7 +107,8 @@ function onStruct(char, struct) {
       fallingSystem(char);
     } //Turn off fallingSystem when char is beyond any structure and is on the main platform
   }
-};
+
+}
 
 
 function findCollision(char, struct, jump) {
