@@ -61,10 +61,12 @@ export const game = {
 
     this.player = new Player('player player--style player--first');
     this.playerControl = new PlayerControl();
+    this.player.timer();
 
     if (this.multiGame) {
       this.player2 = new Player('player player--style player--second')
       this.player2Control = new PlayerControl();
+      this.player2.timer();
     }
     else if (!this.multiGame && this.player2) {
       this.player2 = undefined;
@@ -88,12 +90,9 @@ export const game = {
     gameBoard.style.left = 0;
 
     this.player.canMove = true;
-    this.player.timer();
 
-    if (this.multiGame) {
-      this.player2.canMove = true;
-      this.player2.timer();
-    }
+    if (this.multiGame) this.player2.canMove = true;
+
   },
 
   setStats: function(stats, char, value) {

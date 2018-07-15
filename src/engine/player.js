@@ -118,7 +118,7 @@ class Player extends Structure {
         this.min++;
       }
       this.time = this.min + ":" + this.sec + ":" + this.ms;
-      setTimeout(()=> this.timer(), 100);
+      setTimeout(()=> this.timer(), 10);
     }
 
     game.setStats(1, this, this.time)
