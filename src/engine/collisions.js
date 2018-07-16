@@ -82,7 +82,7 @@ function onStruct(char, struct) {
   if (char.B[0] > struct.A[0]+1 && char.A[0] < struct.B[0]-1) { //x-axis
     if ((char.A[1] > struct.D[1] + 3 && char.A[1] < struct.A[1] - 3) || (char.D[1] > struct.D[1] + 3 && char.D[1] < struct.A[1] - 3)) { //y-axis
       //Character is inside structure
-      //This provide disable possibility move through structure after jump and stop on this structure
+      //This prevent possibility of moving through structure after jump and stop on this structure
       if (char.vector !== char.oldVector) return;
       char.onStruct = false;
       char.jumpCollision = null;
@@ -142,11 +142,11 @@ function findCollision(char, struct, jump) {
 function directionLeft(char, part, jump) {
   let pBoard = game.currentBoard.partOfMap[part];
 
-  for (let i=0; i<pBoard.length; i++) {
-    if(char.A[0] <= pBoard[i].B[0] && char.B[0] > pBoard[i].A[0]) {
+  for (let pb of pBoard) {
+    if(char.A[0] <= pb.B[0] && char.B[0] > pb.A[0]) {
 
-      if ((char.A[1] <= pBoard[i].B[1] && char.A[1] >= pBoard[i].C[1]) || (char.D[1] <= pBoard[i].B[1] && char.A[1] >= pBoard[i].C[1])) {
-        if(findCollision(char, pBoard[i], jump)) return true;
+      if ((char.A[1] <= pb.B[1] && char.A[1] >= pb.C[1]) || (char.D[1] <= pb.B[1] && char.A[1] >= pb.C[1])) {
+        if(findCollision(char, pb, jump)) return true;
         else break;
       }
     }
@@ -160,11 +160,11 @@ function directionLeft(char, part, jump) {
 function directionRight(char, part, jump) {
   let pBoard = game.currentBoard.partOfMap[part];
 
-  for (let i=0; i<pBoard.length; i++) {
-    if(char.B[0] >= pBoard[i].A[0] && char.A[0] < pBoard[i].B[0]) { //x-axis
+  for (let pb of pBoard) {
+    if(char.B[0] >= pb.A[0] && char.A[0] < pb.B[0]) { //x-axis
 
-      if ((char.B[1] <= pBoard[i].A[1] && char.B[1] >= pBoard[i].D[1]) || (char.C[1] <= pBoard[i].A[1] && char.B[1] >= pBoard[i].D[1])) { //y-axis
-         if(findCollision(char, pBoard[i], jump)) return true;
+      if ((char.B[1] <= pb.A[1] && char.B[1] >= pb.D[1]) || (char.C[1] <= pb.A[1] && char.B[1] >= pb.D[1])) { //y-axis
+         if(findCollision(char, pb, jump)) return true;
          else break;
       }
     }

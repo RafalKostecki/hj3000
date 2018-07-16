@@ -38,9 +38,9 @@ export class PlayerControl {
   };
 
   addGameControl() {
-    let startOneBtn = document.getElementById('startOne');
-    let startTwoBtn = document.getElementById('startTwo');
-    let giveUpBtn = document.getElementById('giveUpBoard');
+    const startOneBtn = document.getElementById('startOne');
+    const startTwoBtn = document.getElementById('startTwo');
+    const giveUpBtn = document.getElementById('giveUpBoard');
 
     startOneBtn.addEventListener('click', () => {
       game.runGame(false);
@@ -73,7 +73,7 @@ export class PlayerControl {
   };
 
   //If player pressed key of wasd or arrows on keyboard, the movement will be stopped
-  keyUp(event) {
+  keyUp() {
     this.startKey = false;
   };
 

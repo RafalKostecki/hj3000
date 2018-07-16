@@ -4,11 +4,11 @@ import { Player } from './player.js';
 import { Board } from './board.js';
 
 
-let gameBoard = document.getElementById('gameBoard');
-let gameWindow = document.getElementById('gameWindow');
-let gameWrapper = document.getElementById('gameWrapper');
-let gameArt = document.getElementById('gameArt');
-let gameFrame = document.getElementById('game');
+const gameBoard = document.getElementById('gameBoard');
+const gameWindow = document.getElementById('gameWindow');
+const gameWrapper = document.getElementById('gameWrapper');
+const gameArt = document.getElementById('gameArt');
+const gameFrame = document.getElementById('game');
 
 let instance;
 
@@ -38,7 +38,7 @@ function changePosition(type, char, wDebt, hDebt, ladder) {
 };
 
 function isInt(value) {
-  var x = parseFloat(value);
+  const x = parseFloat(value);
   return !isNaN(value) && (x | 0) === x;
 };
 
@@ -98,8 +98,8 @@ export const game = {
   setStats: function(stats, char, value) {
     if (this.stop) return;
     
-    let charContainsClass = char.struct.classList.contains('player--first');
-    let id = charContainsClass ? 0 : 1;
+    const charContainsClass = char.struct.classList.contains('player--first');
+    const id = charContainsClass ? 0 : 1;
 
     switch(stats) {
       case 0: //Points
@@ -158,14 +158,13 @@ export const game = {
 
     if (isInt(widthDebt) && isInt(heightDebt)) changePosition(type, char, widthDebt, heightDebt)
     else throw new Error('Debet cannot has different type than integer.');
-
   },
 
   setWindow: () => {
-    let width = Board.prototype.theSmallestSize(0);
-    let height = Board.prototype.theSmallestSize(1);
-    let windowHeight = window.innerHeight;
-    let titleHeight = document.getElementById('title').offsetHeight;
+    const width = Board.prototype.theSmallestSize(0);
+    const height = Board.prototype.theSmallestSize(1);
+    const windowHeight = window.innerHeight;
+    const titleHeight = document.getElementById('title').offsetHeight;
 
     gameArt.style.maxWidth = width + 'px';
     gameWrapper.style.maxWidth = width + 'px';
