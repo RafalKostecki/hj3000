@@ -4,26 +4,26 @@ class Interface {
     this.methods = [];
     this.properties = [];
 
-    for (let i=0; i < methods.length; i++) {
-      if (typeof methods[i] !== 'string') {
+    for (let method of methods) {
+      if (typeof method !== 'string') {
         throw new Error('The constructor of the interface wait for method names as chain.')
       }
-      this.methods.push(methods[i]);
+      this.methods.push(method);
     };
 
-    for (let i=0; i < properties.length; i++) {
-      if (typeof properties[i] !== 'string') {
+    for (let property of properties) {
+      if (typeof property !== 'string') {
       throw new Error('The constructor of the interface wait for property names as chain.')
       }
-      this.properties.push(properties[i]);
+      this.properties.push(property);
     };
 
   }; //The end of constructor
 
   isIplementedBy(obj) {
-    var methodsLen = this.methods.length;
-    var propertiesLen = this.properties.length;
-    var currentMember;
+    const methodsLen = this.methods.length;
+    const propertiesLen = this.properties.length;
+    let currentMember;
 
     if(obj) {
       //Methods checking

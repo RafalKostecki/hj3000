@@ -10,7 +10,6 @@ const gameWrapper = document.getElementById('gameWrapper');
 const gameArt = document.getElementById('gameArt');
 const gameFrame = document.getElementById('game');
 
-let instance;
 
 function changePosition(type, char, wDebt, hDebt, ladder) {
   switch(type) {
@@ -153,8 +152,8 @@ export const game = {
     const charContainsClass = char.struct.classList.contains('player--first');
     if (!charContainsClass) return; //Prevent move board by two players
 
-    let widthDebt = gameBoard.clientWidth-gameWindow.offsetWidth;
-    let heightDebt = gameBoard.clientHeight-gameWindow.clientHeight;
+    const widthDebt = gameBoard.clientWidth-gameWindow.offsetWidth;
+    const heightDebt = gameBoard.clientHeight-gameWindow.clientHeight;
 
     if (isInt(widthDebt) && isInt(heightDebt)) changePosition(type, char, widthDebt, heightDebt)
     else throw new Error('Debet cannot has different type than integer.');

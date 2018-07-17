@@ -13,11 +13,9 @@ function createWindow () {
     width: 1000,
     height: 450,
     minWidth: 500,
-    minHeight: 400,
-    webPreferences: {
-      preload: path.join(__dirname, './src/scripts/preload.js')
-    }
+    minHeight: 400
   }); 
+  mainWindow.setMenu(null);
 
   // and load the index.html of the sources.
   mainWindow.loadURL(url.format({

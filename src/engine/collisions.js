@@ -45,7 +45,7 @@ function fallingCol(char, breakPoints) {
 function fallingSystem(char) {
   if (char.isJumping) return;
 
-  const breakPoints = game.currentBoard.collisionLinesY;
+  const breakPoints = game.currentBoard.collisionLinesY
 
   const interval = setInterval(
     () => {
@@ -118,11 +118,14 @@ function findCollision(char, struct, jump) {
     fallingSystem(char);
     return true;
   }
+  
   if (struct.id !== char.jumpCollision) { //This create new collision
     char.collisionCounter = 0;
     char.collisionStruct = struct;
   }
+
   char.jumpCollision = struct.id;
+
   if (struct.id === char.jumpCollision) {
     if (char.collisionCounter === 0) { //The first move has been blocked.
       char.collisionCounter++;
