@@ -2,10 +2,13 @@ const {app, BrowserWindow, Menu} = require('electron');
 const path = require('path');
 const url = require('url');
 const shell = require('electron').shell;
+const globalShortcut = require('electron').globalShortcut;
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 export let mainWindow;
+
 
 function createWindow () {
   // Create the browser window.
@@ -24,6 +27,15 @@ function createWindow () {
     slashes: true
   }))
 
+  globalShortcut.register('f5', function() {
+		console.log('f5 is pressed')
+		mainWindow.reload()
+	})
+	globalShortcut.register('CommandOrControl+R', function() {
+		console.log('CommandOrControl+R is pressed')
+		mainWindow.reload()
+	})
+1
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
@@ -35,6 +47,7 @@ function createWindow () {
     mainWindow = null
   })
 };
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
