@@ -1,4 +1,4 @@
-import { Structure } from '../../engine/structure.js'
+import { Structure } from '../../gameEngine/structure.js'
 
 const structure = new Structure;
 const structure1 = new Structure;

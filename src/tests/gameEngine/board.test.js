@@ -1,5 +1,5 @@
-import { Board, addToPartOfMap } from '../../engine/board.js'
-import { Structure } from '../../engine/structure.js'
+import { Board, addToPartOfMap } from '../../gameEngine/board.js'
+import { Structure } from '../../gameEngine/structure.js'
 
 
 let partsOfMap = [

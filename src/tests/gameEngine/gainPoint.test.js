@@ -1,4 +1,4 @@
-import { GainPoint, destroy } from '../../engine/gainPoint.js'
+import { GainPoint, destroy } from '../../gameEngine/gainPoint.js'
 
 const gainPoint = new GainPoint
 const gainPoint1 = new GainPoint

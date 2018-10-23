@@ -1,4 +1,4 @@
-import { Ladder } from '../../engine/ladder.js'
+import { Ladder } from '../../gameEngine/ladder.js'
 
 const ladder = new Ladder();
 ladder.createLadder(100, 50, 300); //x, y, height

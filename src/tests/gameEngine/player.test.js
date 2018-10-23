@@ -1,5 +1,5 @@
-import { Player, checkGainedPoints } from '../../engine/player.js'
-import { GainPoint } from '../../engine/gainPoint.js'
+import { Player, checkGainedPoints } from '../../gameEngine/player.js'
+import { GainPoint } from '../../gameEngine/gainPoint.js'
 
 
 const player = new Player
