@@ -19,10 +19,10 @@ html
       content = author
     )
     link(rel='Shortcut icon' href = shortcutIcon)
-    link(rel='stylesheet' href='../styles/boards.less' type='text/css')
+    link(rel='stylesheet' href='../assets/styles/boards.less' type='text/css')
     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400')
   body
-    header(id='title' class='title title--style')
+    header.title.title--style
       div.title__lBox
         h2 hiper jumper 3000
       div.title__rBox
@@ -40,7 +40,7 @@ html
           h3 
             a(href='./game.jade') play
     //Scripts
-    script(src='../scripts/showBoards.js')
+    script(src='../assets/scripts/showBoards.js')
       
 
 

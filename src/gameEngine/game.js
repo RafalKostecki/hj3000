@@ -11,7 +11,7 @@ const gameArt = document.getElementById('gameArt');
 const gameFrame = document.getElementById('game');
 
 
-function changePosition(type, char, wDebt, hDebt, ladder) {
+function changePosition(type, char, wDebt, hDebt) {
   switch(type) {
     case 0: //Left
       if ((gameBoard.offsetLeft >= 0) || (char.A[0]-wDebt > gameWindow.clientWidth/2)) return;
@@ -54,7 +54,7 @@ export const game = {
   player2Control: null,
   stop: false,
 
-  runGame: function (multi=false) {
+  runGame(multi=false) {
     if (this.start) return;
     this.multiGame = multi;
 
@@ -75,7 +75,7 @@ export const game = {
     this.run();
   },
 
-  run: function() {
+  run() {
     this.start = true;
 
     this.currentBoard = new Board(this.currentLvl);
@@ -94,7 +94,7 @@ export const game = {
 
   },
 
-  setStats: function(stats, char, value) {
+  setStats(stats, char, value) {
     if (this.stop) return;
     
     const charContainsClass = char.struct.classList.contains('player--first');
@@ -110,7 +110,7 @@ export const game = {
     }
   },
 
-  endBoard: function() {
+  endBoard() {
     if (!this.start) return;
 
     document.getElementsByClassName('barrier').remove();
@@ -125,13 +125,11 @@ export const game = {
     this.player.gp = 0;
 
     this.currentLvl++;
-    if (this.currentLvl >= this.currentBoard.quantityOfLvls) {
-      this.endGame();
-    }
+    if (this.currentLvl >= this.currentBoard.quantityOfLvls) this.endGame();
     else this.run();
   },
 
-  endGame: function() {
+  endGame() {
     alert('The end!')
     this.start = false;
 
@@ -148,7 +146,7 @@ export const game = {
     document.getElementsByClassName('player').remove();
   },
 
-  moveBoard: (type, char) => {
+  moveBoard(type, char) {
     const charContainsClass = char.struct.classList.contains('player--first');
     if (!charContainsClass) return; //Prevent move board by two players
 
@@ -159,7 +157,7 @@ export const game = {
     else throw new Error('Debet cannot has different type than integer.');
   },
 
-  setWindow: () => {
+  setWindow() {
     const width = Board.prototype.theSmallestSize(0);
     const height = Board.prototype.theSmallestSize(1);
     const windowHeight = window.innerHeight;

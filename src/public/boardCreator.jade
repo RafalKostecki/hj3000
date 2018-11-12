@@ -19,7 +19,15 @@ html
       content = author
     )
     link(rel='Shortcut icon' href = shortcutIcon)
-    link(rel='stylesheet' href='../styles/game.less' type='text/css')
+    link(rel='stylesheet' href='../assets/styles/boardCreator.less' type='text/css')
     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400')
   body
-   div board creator
+    header.title.title--style
+      div.title__lBox
+        h2 hiper jumper 3000
+      div.title__rBox
+        h4 created by 
+          a(href='http://poyters.pl') poyters.
+        h5 alpha 1.0.1
+    main.boardCreator
+	  nav.boardCreator__nav nav

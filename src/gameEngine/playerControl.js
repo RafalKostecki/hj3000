@@ -1,7 +1,7 @@
 import { game } from './game.js';
 
 
-function operator(instance, char, type) {
+const operator = (instance, char, type) => {
   if (instance.ableToMove) { //Decrease invoked playerMove function
     if (game.collisionsSystem.movement(char, false)) instance.ableToMove = false;
   }
@@ -10,7 +10,8 @@ function operator(instance, char, type) {
   move(instance, char, type);
 };
 
-function move(instance, char, type) {
+
+const move = (instance, char, type) => {
   if(!char.canMove || char.isJumping) return; //Disable move if player is jumping in this moment
 
   if (instance.currentType !== type && !instance.ableToMove) instance.ableToMove = true;

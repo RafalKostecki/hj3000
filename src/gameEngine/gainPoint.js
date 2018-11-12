@@ -4,16 +4,16 @@ const gameBoard = document.getElementById('gameBoard');
 let idCounter = 0;
 
 
-function destroy(point) {
+const destroy = point => {
   const id = 'gainPoint' + point.id;
-  document.getElementById(id).remove()
+  document.getElementById(id).remove();
   const array = game.currentBoard.gainPoints;
   const index = array.indexOf(point);
   array.splice(index, 1);
 };
 
 
-function setStyle(point, style='gainPoint gainPoint--style') {
+const setStyle = (point, style='gainPoint gainPoint--style') => {
   point.gainPoint.className = style;
 
   if ((game.multiGame && point.gained===2) || (!game.multiGame && point.gained===1)) destroy(point);

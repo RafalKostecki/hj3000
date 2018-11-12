@@ -3,16 +3,16 @@ import { char } from './char.js';
 import { game } from './game.js';
 
 
-function checkGainedPoints(character, gainPoint) {
+const checkGainedPoints = (character, gainPoint) => {
   const gained = character.gainedPoints;
 
-  for (let point of gained) {
+  for (const point of gained) {
     if (gainPoint.id === point) return true;
   }
 };
 
 
-function checkEndPoint(character) {
+const checkEndPoint = character => {
   const endPoint = game.currentBoard.endPoint;
 
   if ((endPoint.x+10 > character.A[0] && endPoint.x+10 < character.B[0]) && (endPoint.y-4 > character.D[1] && endPoint.y-4 < character.A[1])) {

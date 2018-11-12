@@ -1,4 +1,4 @@
-import { loadBoards, allBoards } from '../scripts/loadBoards.js';
+import { loadBoards, allBoards } from '../assets/scripts/loadBoards.js';
 import fs from 'fs';
 
 
@@ -17,19 +17,19 @@ const showBoards = () => {
   }
 }
 
-function switchCheck(board, name) {
+const switchCheck = (board, name) => {
   board.file.checked = !board.file.checked;
   fs.writeFileSync(board.path, JSON.stringify(board.file));
   if (board.file.checked) setChecked(name);
   else unChecked(name)
 }
 
-function setChecked(name) {
+const setChecked = name => {
   name.style.color = '#720b0b';
   name.style.fontWeight = 'bold';
 }
 
-function unChecked(name) {
+const unChecked = name => {
   name.style.color = 'inherit';
   name.style.fontWeight = 'normal';
 }

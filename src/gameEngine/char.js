@@ -17,10 +17,10 @@ function jumpAnime(char) {
   }
 
   char.counter++
-
 }
 
-export const char = (lifes) => ({
+
+export const char = lifes => ({
   life: lifes,
   //Below variables which are necessary to collision system
   jumpCollision: null,
@@ -34,7 +34,7 @@ export const char = (lifes) => ({
   counter: 0,
   isFalling: false,
 
-  move: (direction, char, movementSpeed) => {
+  move(direction, char, movementSpeed) {
     IisStruct.isIplementedBy(char);
     const boundElement = Structure.prototype.changePosition.bind(char);
 
@@ -48,7 +48,7 @@ export const char = (lifes) => ({
     else throw new Error('Cannot recognize direction value.')
   },
 
-  jump: (char) => {
+  jump(char) {
     if (char.isJumping) return
 
     IisStruct.isIplementedBy(char)

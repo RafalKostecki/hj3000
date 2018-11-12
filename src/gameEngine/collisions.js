@@ -2,7 +2,7 @@ import { game } from './game.js';
 import { IisChar } from './interface.js';
 
 
-function isBeyondBoard(char) {
+const isBeyondBoard = char => {
   if(char.A[0] <= 5 || char.B[0] >= game.currentBoard.width - 5) { //x-axis
     if(char.isJumping) {
       //if player wanted to jump beyond the board
@@ -21,10 +21,10 @@ function isBeyondBoard(char) {
 }
 
 
-function fallingCol(char, breakPoints) {
-  for (let bp of breakPoints) {
+const fallingCol = (char, breakPoints) => {
+  for (const bp of breakPoints) {
     if (char.A[1] >= bp[1] && char.A[1] < bp[1] + 5) {  //y-axis
-      for(let struct of game.currentBoard.structs) {
+      for(const struct of game.currentBoard.structs) {
         if (struct.D[1] === bp[1]) {
           if(char.B[0] > struct.A[0] && char.A[0] < struct.B[0]) { //x-axis
             char.onStruct = true
@@ -42,7 +42,7 @@ function fallingCol(char, breakPoints) {
 }
 
 
-function fallingSystem(char) {
+const fallingSystem = char => {
   if (char.isJumping) return;
 
   const breakPoints = game.currentBoard.collisionLinesY
@@ -65,7 +65,7 @@ function fallingSystem(char) {
 } 
 
 
-function onStruct(char, struct) {
+const onStruct = (char, struct) => {
   if (struct === null) return;
 
 
@@ -111,7 +111,7 @@ function onStruct(char, struct) {
 }
 
 
-function findCollision(char, struct, jump) {
+const findCollision = (char, struct, jump) => {
   if (jump && char.collisionCounter > 0 && !char.onStruct) {
     char.jumpCollision = struct.id;
     char.collisionStruct = struct;
@@ -142,8 +142,8 @@ function findCollision(char, struct, jump) {
 };
 
 
-function directionLeft(char, part, jump) {
-  let pBoard = game.currentBoard.partOfMap[part];
+const directionLeft = (char, part, jump) => {
+  const pBoard = game.currentBoard.partOfMap[part];
 
   for (let pb of pBoard) {
     if(char.A[0] <= pb.B[0] && char.B[0] > pb.A[0]) {
@@ -160,8 +160,8 @@ function directionLeft(char, part, jump) {
 };
 
 
-function directionRight(char, part, jump) {
-  let pBoard = game.currentBoard.partOfMap[part];
+const directionRight = (char, part, jump) => {
+  const pBoard = game.currentBoard.partOfMap[part];
 
   for (let pb of pBoard) {
     if(char.B[0] >= pb.A[0] && char.A[0] < pb.B[0]) { //x-axis
@@ -178,7 +178,7 @@ function directionRight(char, part, jump) {
 };
 
 
-function divideMap(char, jump) {
+const divideMap = (char, jump) => {
   let partOfMap;
 
   if (char.vector === 1) { //Right
@@ -213,7 +213,7 @@ function divideMap(char, jump) {
 
 export const Collisions = {
   //If this function return true, player can`t move
-  movement: (char, jump) => {
+  movement(char, jump) {
     IisChar.isIplementedBy(char);
 
     char.gainPoints();
@@ -222,7 +222,7 @@ export const Collisions = {
     if (divideMap(char, jump)) return true;
   },
 
-  endJump: (char) => {
+  endJump(char) {
     IisChar.isIplementedBy(char);
     //TODO: I oguth to check where was call this method and if this was in char.jump I run fallingSystem in another cases not.
     fallingSystem(char)

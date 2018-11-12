@@ -3,7 +3,7 @@ import { game } from './game.js';
 import { IisStruct, IisPlayer, IisGainPoint} from './interface.js';
 import { GainPoint } from './gainPoint.js';
 import { Ladder } from './ladder.js';
-import { loadBoards, checkedBoards } from '../scripts/loadBoards.js'
+import { loadBoards, checkedBoards } from '../assets/scripts/loadBoards.js'
 
 const gameBoard = document.getElementById('gameBoard');
 
@@ -82,7 +82,7 @@ class Board {
       game.player2.collisionCounter = 1;
     }
 
-    for (let structure of levels[lvl].structures) {
+    for (const structure of levels[lvl].structures) {
       const struct = new Structure('barrier barrier--style');
       this.addScruct(struct);
 
@@ -104,7 +104,7 @@ class Board {
   };
 
   addGainPoints(stages=levels, create=true) { //Default set at true, so we want to also add gainPoint to gameBoard
-    for (let gp of stages[this.level].gainPoints) {
+    for (const gp of stages[this.level].gainPoints) {
       const gainPoint = new GainPoint();
 
       if (create) {
@@ -127,7 +127,7 @@ class Board {
   };
 
   addLadders(stages=levels, create=true) { //Default set at true, so we want to also add addLadders to gameBoard
-    for (let lad of stages[this.level].ladders) {
+    for (const lad of stages[this.level].ladders) {
       const ladder = new Ladder();
 
       if (create) {
